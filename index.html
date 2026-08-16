@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!-- 
+  CRASH COURSE: <!DOCTYPE html>
+  This tells the browser: "Use modern HTML5 rules."
+  Without it, browsers switch to "quirks mode" and your site looks broken.
+-->
+<html lang="en">
+<!-- 
+  <html> is the root container. Everything lives inside it.
+  lang="en" tells screen readers and search engines this is English.
+-->
+
+<head>
+  <!-- 
+    <head> = The "brain" of the page. 
+    Nothing here is visible. It holds settings, title, and style links.
+  -->
+
+  <meta charset="UTF-8">
+  <!-- 
+    CHARSET: Tells browser how to read text.
+    UTF-8 supports Arabic, emojis, and special characters.
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    VIEWPORT: Critical for mobile.
+    "width=device-width" = match phone screen width.
+    "initial-scale=1.0" = don't zoom in/out on load.
+    Without this, your site looks tiny on phones.
+  -->
+
+  <title>Ahmed Iprahim | Data Scientist</title>
+  <!-- 
+    TITLE: Shows in the browser tab and Google search results.
+    Keep it under 60 characters.
+  -->
+
+  <!-- Google Fonts: Inter (clean, modern, used by most tech portfolios) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- 
+    FONTS: We load Inter from Google.
+    "preconnect" makes it load faster.
+    Weights: 300=light, 400=normal, 600=semi-bold, 800=extra-bold.
+  -->
+
+  <!-- Link to our CSS file (we create this in Step 2) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome: Free icons (GitHub, LinkedIn, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <!-- 
+    <body> = Everything visible on screen starts here.
+    Think of it as the canvas.
+  -->
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="glass-nav">
+    <!-- 
+      <nav> = Navigation landmark. Screen readers announce "navigation."
+      class="glass-nav" = we'll style this in CSS to look like AyaNexus's glass pill.
+    -->
+    <div class="nav-container">
+      <!-- 
+        <div> = Division. A generic box with no meaning.
+        We use it to group things for styling.
+        "container" = standard name for a centered content wrapper.
+      -->
+
+      <a href="index.html" class="nav-logo">Ahmed.</a>
+      <!-- 
+        <a> = Anchor = Link.
+        href="index.html" = clicking goes to home page.
+        class="nav-logo" = we'll style this as your name/logo.
+      -->
+
+      <ul class="nav-links">
+        <!-- 
+          <ul> = Unordered List (bullet points, but we remove bullets in CSS).
+          <li> = List Item. Each navigation link is one item.
+        -->
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="data-science.html">Data Science</a></li>
+        <li><a href="data-analysis.html">Data Analysis</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="resume.html" class="nav-resume">Resumes</a>
+      <!-- 
+        target="_blank" = Opens in new tab.
+        Good for PDFs and external links so user doesn't leave your site.
+      -->
+    </div>
+  </nav>
+
+  <!-- ===================== FLOATING ORBS (Mouse Effect) ===================== -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <!-- 
+    These are the colored gradient blobs that follow your mouse.
+    We create 3 divs (boxes) with no content — just color and blur.
+    JavaScript will move them in Step 2.
+  -->
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section id="hero">
+    <!-- 
+      <section> = Thematic grouping of content.
+      id="hero" = unique identifier. The nav can link to #hero.
+      The hero is the top area with your name and title.
+    -->
+    <div class="container">
+      <p class="greeting">Hi, I'm Ahmed Iprahim</p>
+      <!-- class="greeting" = small text above main title -->
+
+      <h1 class="hero-title">Data Scientist & Analyst</h1>
+      <!-- 
+        <h1> = The most important heading on the page.
+        There should be only ONE h1 per page (SEO rule).
+        This is what Google reads first.
+      -->
+
+      <p class="hero-subtitle">
+        Junior Data Scientist | Data Analyst | ML • SQL • Python • Power BI | ALX Data analysis | ALX Data Science & ML Certified
+      </p>
+      <!-- 
+        <p> = Paragraph. 
+        The • symbol is a bullet (Alt+7 on Windows, Option+8 on Mac).
+      -->
+
+      <div class="social-links">
+        <!-- 
+          Social icon buttons.
+          <i> = icon (from Font Awesome).
+          fa-brands = brand icons (GitHub, LinkedIn).
+          fa-github = the GitHub cat icon.
+        -->
+        <a href="https://github.com/afadamarcello-code" target="_blank" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/ahmed-iprahim-a51240133" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:ahmediprahim750@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <!-- 
+          aria-label = Accessibility text for screen readers.
+          Blind users hear "GitHub" instead of silence.
+        -->
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <!-- ===================== TECH STACK MARQUEE ===================== -->
+  <section id="tech-stack">
+    <div class="container">
+      <h2 class="section-title">My Full Tech Stack</h2>
+      <!-- <h2> = Second-level heading. Used for section titles. -->
+
+      <div class="marquee">
+        <!-- Marquee = infinite scrolling container -->
+        <div class="marquee-content">
+          <!-- We duplicate items to create seamless loop -->
+          <span class="tech-item"><i class="fa-brands fa-python"></i> Python</span>
+          <span class="tech-item"><i class="fa-solid fa-database"></i> SQL</span>
+          <span class="tech-item"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+          <span class="tech-item"><i class="fa-solid fa-chart-line"></i> Pandas</span>
+          <span class="tech-item"><i class="fa-solid fa-brain"></i> Scikit-learn</span>
+          <span class="tech-item"><i class="fa-solid fa-table"></i> PostgreSQL</span>
+          <span class="tech-item"><i class="fa-solid fa-rocket"></i> Streamlit</span>
+          <span class="tech-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+          <span class="tech-item"><i class="fa-brands fa-github"></i> GitHub</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="tech-item"><i class="fa-brands fa-python"></i> Python</span>
+          <span class="tech-item"><i class="fa-solid fa-database"></i> SQL</span>
+          <span class="tech-item"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+          <span class="tech-item"><i class="fa-solid fa-chart-line"></i> Pandas</span>
+          <span class="tech-item"><i class="fa-solid fa-brain"></i> Scikit-learn</span>
+          <span class="tech-item"><i class="fa-solid fa-table"></i> PostgreSQL</span>
+          <span class="tech-item"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+          <span class="tech-item"><i class="fa-solid fa-rocket"></i> Streamlit</span>
+          <span class="tech-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+          <span class="tech-item"><i class="fa-brands fa-github"></i> GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ACCORDION ===================== -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">How I Solve Data Challenges</h2>
+
+      <div class="skills-grid">
+        <!-- Left: Accordion -->
+        <div class="accordion">
+          <!-- 
+            Accordion = collapsible sections.
+            Each item has a button (header) and a panel (hidden content).
+          -->
+
+          <div class="accordion-item active">
+            <!-- "active" class means this one starts open -->
+            <button class="accordion-header">
+              <span class="accordion-icon"><i class="fa-solid fa-brain"></i></span>
+              <span>ML & Predictive Modeling</span>
+              <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-panel">
+              <p>Building end-to-end machine learning pipelines — from data preprocessing and feature engineering to model deployment. Experienced with recommender systems, regression, and classification using Scikit-learn and XGBoost.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon"><i class="fa-solid fa-server"></i></span>
+              <span>Data Engineering & SQL</span>
+              <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-panel">
+              <p>Designing relational databases in PostgreSQL with complex schemas, constraints, and normalization. Writing advanced queries with CTEs, window functions, and JOINs. Building data pipelines that turn messy operational data into clean, queryable structures.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-icon"><i class="fa-solid fa-chart-column"></i></span>
+              <span>Data Analysis & Visualization</span>
+              <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-panel">
+              <p>Exploratory Data Analysis on real-world datasets. Creating interactive dashboards in Power BI and Plotly. Translating raw numbers into business insights that drive decisions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Code Block Decoration -->
+        <div class="code-block">
+          <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-title">skills.py</span>
+          </div>
+          <pre class="code-body"><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load messy operational data
+df = pd.read_sql("SELECT * FROM tickets", conn)
+
+# Clean & engineer features
+df['response_time'] = pd.to_datetime(
+    df['resolved'] - df['created']
+)
+
+# Train predictive model
+X_train, X_test = train_test_split(
+    df, test_size=0.2, random_state=42
+)
+
+model.fit(X_train, y_train)
+print(f"RMSE: {model.score(X_test):.4f}")</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS PREVIEW ===================== -->
+  <section id="projects-preview">
+    <div class="container">
+      <p class="section-label">My Work</p>
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project-categories">
+        <!-- Data Science Card -->
+        <a href="data-science.html" class="category-card ds-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Data Science</h3>
+            <p>Machine Learning, Predictive Modeling, Recommender Systems, and End-to-End Pipelines.</p>
+            <div class="card-tags">
+              <span>Python</span>
+              <span>Scikit-learn</span>
+              <span>Streamlit</span>
+            </div>
+            <span class="card-link">View Projects <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- Data Analysis Card -->
+        <a href="data-analysis.html" class="category-card da-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <h3>Data Analysis</h3>
+            <p>EDA, Statistical Analysis, Database Design, Dashboards, and Business Intelligence.</p>
+            <div class="card-tags">
+              <span>SQL</span>
+              <span>Power BI</span>
+              <span>PostgreSQL</span>
+            </div>
+            <span class="card-link">View Projects <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CERTIFICATES PREVIEW ===================== -->
+  <section id="certificates-preview">
+    <div class="container">
+      <p class="section-label">Credentials</p>
+      <h2 class="section-title">Certificates</h2>
+
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-org">ALX Africa</div>
+          <h4>Machine Learning Certificate</h4>
+          <p class="cert-date">Apr 2026</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">ALX Africa</div>
+          <h4>Data Science Certificate</h4>
+          <p class="cert-date">Apr 2026</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">ALX Africa</div>
+          <h4>Data Analytics Professional</h4>
+          <p class="cert-date">Sep 2025</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">ALX Africa</div>
+          <h4>Python Programming</h4>
+          <p class="cert-date">2025</p>
+        </div>
+      </div>
+
+      <div class="center-btn">
+        <a href="certificates.html" class="btn-outline">View All Certificates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT PREVIEW ===================== -->
+  <section id="contact-preview">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p class="section-label">Let's talk</p>
+          <h2 class="section-title">Contact</h2>
+          <p class="contact-desc">
+            I'm currently open to Junior Data Scientist and Data Analyst roles. 
+            Remote or Cairo-based. Let's build something impactful together.
+          </p>
+          <p class="contact-location">
+            <i class="fa-solid fa-location-dot"></i> Cairo, Egypt
+          </p>
+        </div>
+
+        <div class="contact-cta">
+          <a href="contact.html" class="btn-primary">Get In Touch</a>
+          <div class="contact-social">
+            <a href="https://github.com/afadamarcello-code" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/ahmed-iprahim-a51240133" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:ahmediprahim750@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-social">
+          <a href="https://github.com/afadamarcello-code" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/ahmed-iprahim-a51240133" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:ahmediprahim750@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">Built with passion & coffee</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link to our JavaScript file (we create this in Step 2) -->
+  <script src="js/script.js"></script>
+</body>
+</html>

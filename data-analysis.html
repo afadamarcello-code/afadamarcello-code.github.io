@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis Projects | Ahmed Iprahim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .page-header {
+      padding-top: 140px;
+      padding-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: var(--space-xs);
+      background: linear-gradient(135deg, #10b981, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: var(--space-md);
+      padding-bottom: var(--space-xl);
+    }
+
+    .browser-mockup {
+      position: relative;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .browser-mockup:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .browser-mockup::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 2px;
+      background: linear-gradient(135deg, #10b981, #3b82f6);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .browser-mockup:hover::before {
+      opacity: 1;
+    }
+
+    .browser-chrome {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .browser-dot.red { background: #ff5f56; }
+    .browser-dot.yellow { background: #ffbd2e; }
+    .browser-dot.green { background: #27c93f; }
+
+    .browser-content {
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      text-align: center;
+      z-index: 1;
+    }
+
+    .project-logo span {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .browser-content::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent 70%);
+      top: -50px;
+      right: -50px;
+    }
+
+    .card-info {
+      padding: var(--space-sm);
+    }
+
+    .card-info h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-info p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-sm);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .card-tags span {
+      padding: 0.25rem 0.625rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-full);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: #10b981;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-links a {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .card-links a:hover {
+      color: var(--text-primary);
+      border-color: #10b981;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <nav class="glass-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Ahmed.</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data-science.html">Data Science</a></li>
+        <li><a href="data-analysis.html" class="active">Data Analysis</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="resume.html" class="nav-resume">Resumes</a>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="section-label">Portfolio</p>
+      <h1>Data Analysis Projects</h1>
+      <p>Exploratory data analysis, database architecture, statistical testing, and business intelligence.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="projects-grid">
+
+      <!-- Project 1: Retail Supply Chain -->
+      <div class="project-card">
+        <div class="browser-mockup" onclick="window.open('assets/projects/retail-supply-chain-analytics.pdf', '_blank')" style="cursor: pointer;">
+          <div class="browser-chrome">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+          </div>
+          <div class="browser-content">
+            <div class="project-logo">
+              Retail
+              <span>Supply Chain Analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3 onclick="window.open('assets/projects/retail-supply-chain-analytics.pdf', '_blank')" style="cursor: pointer;">Retail Supply Chain Data Engineering & Power BI Analytics</h3>
+          <p onclick="window.open('assets/projects/retail-supply-chain-analytics.pdf', '_blank')" style="cursor: pointer;">An end-to-end data engineering and analytics solution built using Python, DuckDB, SQL, and Power BI. This project transforms raw, unstructured operational retail data into a refined Medallion Architecture (Bronze → Silver → Gold) and delivers an interactive executive dashboard covering inventory exposure, sales trends, and stockout risks.</p>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span>SQL</span>
+              <span>Python</span>
+              <span>Power BI</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/afadamarcello-code/retail-supply-chain-analytics" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="assets/projects/retail-supply-chain-analytics.pdf" target="_blank" aria-label="View Dashboard">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Project 2: Marketing Analytics -->
+      <div class="project-card">
+        <div class="browser-mockup" onclick="window.open('assets/projects/Marketing_Analytics_Dashboard.pdf', '_blank')" style="cursor: pointer;">
+          <div class="browser-chrome">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+          </div>
+          <div class="browser-content">
+            <div class="project-logo">
+              Marketing Analytics 
+              <span>Marketing Analytics & Customer Sentiment Analysis</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3 onclick="window.open('assets/projects/Marketing_Analytics_Dashboard.pdf', '_blank')" style="cursor: pointer;">An end-to-end data engineering and analytics solution built using Python, DuckDB, SQL, and Power BI.</h3>
+          <p onclick="window.open('assets/projects/Marketing_Analytics_Dashboard.pdf', '_blank')" style="cursor: pointer;">This project transforms raw, unstructured operational retail data into a refined Medallion Architecture (Bronze → Silver → Gold) and delivers an interactive executive dashboard covering inventory exposure, sales trends, and stockout risks.</p>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span>SQL</span>
+              <span>Python</span>
+              <span>Power BI</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/afadamarcello-code/marketing-analytics-sentiment-analysis" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="assets/projects/Marketing_Analytics_Dashboard.pdf" target="_blank" aria-label="View Dashboard">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Project 3: Customer Churn Analysis - Power BI Dashboard -->
+      <div class="project-card">
+        <div class="browser-mockup" onclick="window.open('assets/projects/CustomerChurn.pdf', '_blank')" style="cursor: pointer;">
+          <div class="browser-chrome">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+          </div>
+          <div class="browser-content">
+            <div class="project-logo">
+                 Churn Analysis
+              <span>📊 Customer Churn Analysis - Power BI Dashboard</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3 onclick="window.open('assets/projects/CustomerChurn.pdf', '_blank')" style="cursor: pointer;">Analyzing customer churn patterns for Databel</h3>
+          <p onclick="window.open('assets/projects/CustomerChurn.pdf', '_blank')" style="cursor: pointer;">a telecom company, to identify key factors driving customer attrition and provide actionable insights.</p>
+
+          <div class="card-meta">
+            <div class="card-tags">
+              
+              <span>Power BI</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/afadamarcello-code/Customer-Churn-Analysis-PowerBI" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="assets/projects/CustomerChurn.pdf" target="_blank" aria-label="View Dashboard">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Mario Database -->
+      <div class="project-card">
+        <div class="browser-mockup" onclick="window.open('https://github.com/afadamarcello-code/mario-database-project', '_blank')" style="cursor: pointer;">
+          <div class="browser-chrome">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+          </div>
+          <div class="browser-content">
+            <div class="project-logo">
+              Mario
+              <span>PostgreSQL DB</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3 onclick="window.open('https://github.com/afadamarcello-code/mario-database-project', '_blank')" style="cursor: pointer;">Mario Database</h3>
+          <p onclick="window.open('https://github.com/afadamarcello-code/mario-database-project', '_blank')" style="cursor: pointer;">Fully relational PostgreSQL database with complex schema design. Implemented many-to-many relationships via junction tables, foreign key constraints, and normalization up to 3NF.</p>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span>PostgreSQL</span>
+              <span>SQL</span>
+              <span>DB Design</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/afadamarcello-code/mario-database-project" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://github.com/afadamarcello-code/mario-database-project" target="_blank" aria-label="View Dashboard">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Celestial Bodies -->
+      <div class="project-card">
+        <div class="browser-mockup" onclick="window.open('assets/projects/celestial-dashboard.pdf', '_blank')" style="cursor: pointer;">
+          <div class="browser-chrome">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+          </div>
+          <div class="browser-content">
+            <div class="project-logo">
+              Universe
+              <span>PostgreSQL DB</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3 onclick="window.open('assets/projects/celestial-dashboard.pdf', '_blank')" style="cursor: pointer;">Celestial Bodies Database</h3>
+          <p onclick="window.open('assets/projects/celestial-dashboard.pdf', '_blank')" style="cursor: pointer;">5-table relational universe schema from galaxies to moons. Complex constraints, junction tables for many-to-many relationships, and full referential integrity.</p>
+          <div class="card-meta">
+            <div class="card-tags">
+              <span>PostgreSQL</span>
+              <span>SQL</span>
+              <span>Schema Design</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/afadamarcello-code/celestial-bodies-database" target="_blank" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="assets/projects/celestial-dashboard.pdf" target="_blank" aria-label="View Dashboard">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-social">
+          <a href="https://github.com/afadamarcello-code" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/ahmed-iprahim-a51240133" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:ahmediprahim750@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">Built with passion & coffee</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

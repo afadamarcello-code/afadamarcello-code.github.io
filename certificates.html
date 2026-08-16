@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates | Ahmed Iprahim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .page-header {
+      padding-top: 140px;
+      padding-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: var(--space-xs);
+    }
+
+    .page-header p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+    }
+
+    .certs-page-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-md);
+      padding-bottom: var(--space-xl);
+    }
+
+    .cert-page-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .cert-page-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-purple);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+    }
+
+    .cert-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--accent-purple);
+  overflow: hidden;
+  position: relative;
+}
+
+.cert-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.cert-image .fallback-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+    .cert-page-body {
+      padding: var(--space-sm);
+    }
+
+    .cert-page-org {
+      color: var(--accent-purple);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-page-body h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-page-date {
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cert-page-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cert-page-tags span {
+      padding: 0.25rem 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-full);
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+    }
+
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: var(--accent-purple);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .cert-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .certs-page-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <nav class="glass-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Ahmed.</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="data-science.html">Data Science</a></li>
+        <li><a href="data-analysis.html">Data Analysis</a></li>
+        <li><a href="certificates.html" class="active">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="resume.html" class="nav-resume">Resumes</a>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="section-label">Credentials</p>
+      <h1>Professional Certifications</h1>
+      <p>Data Science, Machine Learning, Analytics, and Python.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="certs-page-grid">
+
+      <div class="cert-page-card">
+        <div class="cert-image">
+  <img src="assets/images/certs/199-machine-learning-certificate-ahmed-iprahim.png" 
+       alt="Machine Learning Certificate" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Machine Learning Certificate</h3>
+          <p class="cert-page-date">Apr 2026</p>
+          <div class="cert-page-tags">
+            <span>Scikit-learn</span>
+            <span>XGBoost</span>
+            <span>Feature Engineering</span>
+            <span>Model Evaluation</span>
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="cert-page-card">
+         <div class="cert-image">
+  <img src="assets/images/certs/84-data-science-certificate-ahmed-iprahim.png" 
+       alt="Data Science Certificate" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Data Science Certificate</h3>
+          <p class="cert-page-date">Apr 2026</p>
+          <div class="cert-page-tags">
+            <span>Python</span>
+            <span>Statistics</span>
+            <span>ML</span>
+            <span>Deployment</span>
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="cert-page-card">
+         <div class="cert-image">
+  <img src="assets/images/certs/51-data-analytics-certificate-ahmed-iprahim.png" 
+       alt="Data Analytics Professional Certificate" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Data Analytics Professional Certificate</h3>
+          <p class="cert-page-date">Sep 2025</p>
+          <div class="cert-page-tags">
+            <span>SQL</span>
+            <span>Power BI</span>
+            <span>Excel</span>
+            <span>Visualization</span>
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+      <div class="cert-page-card">
+         <div class="cert-image">
+  <img src="assets/images/certs/189-python-programming-certificate-ahmed-iprahim.png" 
+       alt="Python Programming Certificate" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Python Programming Certificate</h3>
+          <p class="cert-page-date">2025</p>
+          <div class="cert-page-tags">
+            <span>Python</span>
+            <span>Automation</span>
+            <span>Scripting</span>
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+      
+
+      <div class="cert-page-card">
+         <div class="cert-image">
+  <img src="assets/images/certs/Screenshot 2026-08-15 033236.png" 
+       alt="Power Bi" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Power Bi Certificate</h3>
+          <p class="cert-page-date">Apr 2026</p>
+          <div class="cert-page-tags">
+            <span>DAX</span>
+            <span>Data Modeling</span>
+            <span>Power Query</span>
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+
+       <div class="cert-page-card">
+         <div class="cert-image">
+  <img src="assets/images/certs/Screenshot 2026-08-15 033306.png" 
+       alt="DAX" 
+       onerror="this.style.display='none'; this.parentElement.querySelector('.fallback-icon').style.display='block';">
+  <i class="fa-solid fa-award fallback-icon" style="display:none;"></i>
+        </div>
+        <div class="cert-page-body">
+          <div class="cert-page-org">ALX Africa</div>
+          <h3>Dax Certificate</h3>
+          <p class="cert-page-date">Apr 2026</p>
+          <div class="cert-page-tags">
+            
+          </div>
+          <a href="#" class="cert-link">Show Credential <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-social">
+          <a href="https://github.com/afadamarcello-code" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/ahmed-iprahim-a51240133" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:ahmediprahim750@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">Built with passion & coffee</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
